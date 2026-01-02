@@ -27,5 +27,10 @@ namespace CapaNegocio
         {
             return DDocente.GetInstance().ObtenerDocentesProyectos(IdCarrera);
         }
+
+        public Respuesta<List<DocenteModelDTO>> ObtenerDocentesProyectosNew(int carreraId)
+        {
+            return DDocente.GetInstance().ObtenerDocentesProyectosNew(carreraId);
+        }
     }
 }

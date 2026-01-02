@@ -11,6 +11,8 @@ namespace CapaEntidad
         public int IdDocente { get; set; }
         public string NombreCompleto { get; set; }
         public string ResumenPerfil { get; set; }
+        public List<string> LineasInvestigacion { get; set; }
+        public List<string> ExperienciaRelevante { get; set; }
         public List<ProyectoSimpleDTO> Proyectos { get; set; }
     }
 }

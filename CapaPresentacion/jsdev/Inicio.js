@@ -2,7 +2,8 @@
 var table;
 
 $('#btnBuscar').on('click', function () {
-    cargarListaRecomen()
+    location.reload();
+    //cargarListaRecomen()
 })
 
 function cargarListaRecomen() {

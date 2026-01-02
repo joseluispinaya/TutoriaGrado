@@ -8,7 +8,7 @@ namespace CapaEntidad
 {
     public class ProyectoSimpleDTO
     {
-        //public int Id { get; set; }
+        public int Id { get; set; }
         public string Titulo { get; set; }
         public string Gestion { get; set; }
     }

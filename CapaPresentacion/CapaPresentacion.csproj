@@ -406,6 +406,10 @@
     <Content Include="assets\pluginzero\toastr\toastr.min.js" />
     <Content Include="Inicio.aspx" />
     <Content Include="jsdev\Inicio.js" />
+    <Content Include="jsdev\ModeloLm.js" />
+    <Content Include="jsdev\ReportesTest.js" />
+    <Content Include="ModeloLm.aspx" />
+    <Content Include="ReportesTest.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -423,7 +427,21 @@
     <Compile Include="Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ModeloLm.aspx.cs">
+      <DependentUpon>ModeloLm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModeloLm.aspx.designer.cs">
+      <DependentUpon>ModeloLm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportesTest.aspx.cs">
+      <DependentUpon>ReportesTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportesTest.aspx.designer.cs">
+      <DependentUpon>ReportesTest.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Utilidadesj.cs" />
   </ItemGroup>
   <ItemGroup>

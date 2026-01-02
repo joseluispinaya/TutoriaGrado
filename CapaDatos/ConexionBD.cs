@@ -28,7 +28,7 @@ namespace CapaDatos
         {
             SqlConnection conexion = new SqlConnection
             {
-                ConnectionString = "Data Source=.;Initial Catalog=TutoriaModelDb;Integrated Security=True"
+                ConnectionString = "Data Source=.;Initial Catalog=TutoriaEmiIa;Integrated Security=True"
             };
 
             return conexion;

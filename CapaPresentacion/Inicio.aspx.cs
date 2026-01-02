@@ -43,7 +43,7 @@ namespace CapaPresentacion
         {
             try
             {
-                Respuesta<List<DocenteModelDTO>> Lista = NDocente.GetInstance().ObtenerDocentesProyectos(IdCarrera);
+                Respuesta<List<DocenteModelDTO>> Lista = NDocente.GetInstance().ObtenerDocentesProyectosNew(IdCarrera);
                 var listaDocentes = Lista.Data;
                 if (!Lista.Estado || listaDocentes.Count == 0)
                 {

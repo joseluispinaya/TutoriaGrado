@@ -83,5 +83,86 @@ namespace CapaDatos
             }
         }
 
+        public Respuesta<List<DocenteModelDTO>> ObtenerDocentesProyectosNew(int carreraId)
+        {
+            try
+            {
+                var docentes = new Dictionary<int, DocenteModelDTO>();
+
+                using (SqlConnection con = ConexionBD.GetInstance().ConexionDB())
+                using (SqlCommand cmd = new SqlCommand("sp_ConsultaDocentesPorCarrera", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@CarreraId", carreraId);
+
+                    con.Open();
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            int idDocente = Convert.ToInt32(dr["Id"]);
+
+                            if (!docentes.ContainsKey(idDocente))
+                            {
+                                docentes[idDocente] = new DocenteModelDTO
+                                {
+                                    NombreCompleto = dr["NombreCompleto"].ToString(),
+                                    ResumenPerfil = dr["ResumenPerfil"].ToString(),
+                                    LineasInvestigacion = new List<string>(),
+                                    ExperienciaRelevante = new List<string>(),
+                                    Proyectos = new List<ProyectoSimpleDTO>()
+                                };
+                            }
+
+                            var docente = docentes[idDocente];
+
+                            // Línea de investigación
+                            if (dr["LineaInvestigacion"] != DBNull.Value)
+                            {
+                                string linea = dr["LineaInvestigacion"].ToString();
+                                if (!docente.LineasInvestigacion.Contains(linea))
+                                    docente.LineasInvestigacion.Add(linea);
+                            }
+
+                            // Experiencia relevante
+                            if (dr["ExperienciaTema"] != DBNull.Value)
+                            {
+                                string tema = dr["ExperienciaTema"].ToString();
+                                if (!docente.ExperienciaRelevante.Contains(tema))
+                                    docente.ExperienciaRelevante.Add(tema);
+                            }
+
+                            // Proyectos
+                            if (dr["ProyectoId"] != DBNull.Value)
+                            {
+                                docente.Proyectos.Add(new ProyectoSimpleDTO
+                                {
+                                    Id = Convert.ToInt32(dr["ProyectoId"]),
+                                    Titulo = dr["ProyectoTitulo"].ToString(),
+                                    Gestion = dr["ProyectoGestion"].ToString()
+                                });
+                            }
+                        }
+                    }
+                }
+
+                return new Respuesta<List<DocenteModelDTO>>
+                {
+                    Estado = true,
+                    Data = docentes.Values.ToList(),
+                    Mensaje = "Docentes obtenidos correctamente"
+                };
+            }
+            catch (Exception ex)
+            {
+                return new Respuesta<List<DocenteModelDTO>>
+                {
+                    Estado = false,
+                    Mensaje = "Error: " + ex.Message
+                };
+            }
+        }
+
     }
 }

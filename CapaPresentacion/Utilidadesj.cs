@@ -115,6 +115,60 @@ namespace CapaPresentacion
         {
             var sb = new StringBuilder();
 
+            sb.AppendLine("Recomienda los tutores más adecuados para el siguiente proyecto.");
+            sb.AppendLine($"Título del proyecto: {titulo}");
+            sb.AppendLine();
+
+            sb.AppendLine("Docentes disponibles:");
+
+            foreach (var d in docentes)
+            {
+                sb.AppendLine($"Docente: {d.NombreCompleto}");
+                sb.AppendLine($"Perfil profesional: {d.ResumenPerfil}");
+
+                if (d.LineasInvestigacion.Any())
+                    sb.AppendLine($"Especialización: {string.Join(", ", d.LineasInvestigacion)}");
+
+                if (d.ExperienciaRelevante.Any())
+                {
+                    sb.AppendLine("Experiencia relevante:");
+                    foreach (var e in d.ExperienciaRelevante)
+                        sb.AppendLine($"- {e}");
+                }
+
+                if (d.Proyectos.Any())
+                {
+                    sb.AppendLine("Proyectos tutorizados:");
+                    foreach (var p in d.Proyectos)
+                        sb.AppendLine($"- {p.Titulo} ({p.Gestion})");
+                }
+
+                sb.AppendLine();
+            }
+
+            sb.AppendLine("Selecciona únicamente los docentes con afinidad REAL y demostrable con el proyecto.");
+            sb.AppendLine("Descarta completamente a los docentes cuya afinidad sea baja o irrelevante.");
+            sb.AppendLine("Devuelve SOLO los mejores candidatos (máximo 3).");
+
+            sb.AppendLine("Asigna PuntajeAfinidad de 0 a 100 considerando:");
+            sb.AppendLine("- Coincidencia temática");
+            sb.AppendLine("- Especialización académica");
+            sb.AppendLine("- Experiencia previa");
+            sb.AppendLine("- Proyectos tutorizados similares");
+
+            sb.AppendLine("Da mayor peso a los docentes que hayan tutorizado proyectos similares al proyecto propuesto.");
+
+            sb.AppendLine("Responde exclusivamente con un JSON válido. No agregues texto adicional.");
+            sb.AppendLine("Formato:");
+            sb.AppendLine("[{\"NombreDocente\":\"\",\"PuntajeAfinidad\":0,\"Justificacion\":\"\"}]");
+
+            return sb.ToString();
+        }
+
+        private string ConstruirPromptOri(string titulo, List<DocenteModelDTO> docentes)
+        {
+            var sb = new StringBuilder();
+
             sb.AppendLine("Recomienda los tutores más adecuados para el siguiente proyecto:");
             sb.AppendLine($"Proyecto: {titulo}");
             sb.AppendLine("Docentes disponibles:");

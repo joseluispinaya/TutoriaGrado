@@ -35,7 +35,40 @@
                     <div class="row">
                         <div class="col-sm-12">
 
-                            <table id="tbResult" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                            <h4 class="m-t-0 m-b-10">Preguntas para evaluar</h4>
+                            <div class="form-group">
+                                <label for="txtobservacion">Observacion General</label>
+                                <textarea class="form-control" rows="4" id="txtobservacion"></textarea>
+                            </div>
+
+                            <div class="card m-b-2">
+                                <div class="card-body p-2">
+                                    <p class="fw-bold">¿Qué actividades disfrutas más en tu tiempo libre?</p>
+                                    <input type="text" class="form-control input-sm">
+                                </div>
+                            </div>
+                            <div class="card m-b-2">
+                                <div class="card-body">
+                                    <p class="fw-bold">¿Prefieres trabajar con personas, datos o máquinas?</p>
+                                    <input type="text" class="form-control input-sm">
+                                </div>
+                            </div>
+                            <div class="card m-b-2">
+                                <div class="card-body">
+                                    <p class="fw-bold">¿Te resulta satisfactorio ayudar a otras personas a resolver problemas?</p>
+                                    <input type="text" class="form-control input-sm">
+                                </div>
+                            </div>
+                            <div class="card m-b-2">
+                                <div class="card-body p-2">
+                                    <div class="form-group">
+                                        <label class="fw-bold">¿Te resulta satisfactorio ayudar a otras personas a resolver problemas?</label>
+                                        <input type="text" class="form-control input-sm">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <%--<table id="tbResult" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
                                         <th>Docente</th>
@@ -45,7 +78,7 @@
                                 </thead>
                                 <tbody>
                                 </tbody>
-                            </table>
+                            </table>--%>
                         </div>
                     </div>
                 </div>
